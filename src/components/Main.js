@@ -1,8 +1,9 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
+import MapContainer from './MapContainer'
 
 class Main extends Component {
     render() {
-        return <h1>Welcome To Webpack & React!</h1>
+        return <MapContainer />
     }
 }
 

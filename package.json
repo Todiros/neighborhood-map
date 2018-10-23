@@ -1,5 +1,5 @@
 {
-  "name": "webpackenv",
+  "name": "neighborhood-map",
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
@@ -9,7 +9,7 @@
     "build": "webpack --mode production"
   },
   "author": "Xzahn",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "7.1.2",
     "@babel/core": "7.1.2",

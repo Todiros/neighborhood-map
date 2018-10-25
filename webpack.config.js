@@ -46,6 +46,16 @@ module.exports = {
             // MiniCssExtractPlugin doesn't work with HMR
             //use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']     
+        },
+        {
+            test: /\.(jpg|png|svg)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'res/img',
+                    publicPath: 'res/img'
+                }
+            }]
         }]
     },
     plugins: [

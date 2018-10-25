@@ -1,16 +1,31 @@
 import React, { Component } from 'react'
-import Map from './Map'
-import GoogleMap from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <div className='marker'>{text}</div>;
+import GoogleMap from 'google-map-react'
+import Marker from './Marker'
+import MarkerImage from '../res/img/location-pin-add-2-solid.svg'
 
 class MapContainer extends Component {
     constructor() {
         super();
         this.state = {
-            welcomeText: '',
-            chargingStations: []
+            stations: []
         }
+    }
+
+    setMarkers(stations) {
+        let markers = []
+
+        Array.prototype.forEach.call(stations, station => {
+
+            markers.push(
+            <Marker key={station.lat + station.lng}
+                lat={station.lat}
+                lng={station.lng}
+                title={station.title}
+                image={MarkerImage}
+            />)
+        })
+
+        return markers
     }
 
     render() {
@@ -21,11 +36,7 @@ class MapContainer extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >
-                    <AnyReactComponent 
-                        lat={this.props.station.lat}
-                        lng={this.props.station.lng}
-                        text={this.props.station.title}
-                    />
+                    {this.setMarkers(this.props.stations)}
                 </GoogleMap>
             </div>
         )

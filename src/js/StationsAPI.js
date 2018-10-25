@@ -1,5 +1,4 @@
 import * as data from '../res/formated_OCM.json'
-import obj from '../res/tempObj'
 import objArr from '../res/objArr'
 
 class Station {
@@ -35,5 +34,16 @@ class Station {
     }
 }
 
-export default Station
+const getAllStations = () => {
+    let stations = []
+    Array.prototype.forEach.call(objArr, station => {
+        station = new Station(station).GetAddressInfo()
+
+        stations.push(station)
+    })
+
+    return stations
+}
+
+export { Station, getAllStations } 
 

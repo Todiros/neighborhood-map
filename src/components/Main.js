@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import MapContainer from './MapContainer'
-import objArr from '../res/objArr'
-import tempObj from '../res/tempObj'
-import Station from '../js/StationsAPI'
+import { getAllStations } from '../js/StationsAPI'
 
 class Main extends Component {
     constructor() {
         super()
         this.state = {
-            station: {},
+            stations: []     
         }
     }
 
     componentDidMount() {
-        const station = new Station(tempObj).GetAddressInfo()
-        this.setState({ station })
+        this.setState({ stations: getAllStations() })
     }
-
+ 
     render() {
-        return <MapContainer station={this.state.station}/>
+        return <MapContainer stations={this.state.stations}/>
     }
 }
 

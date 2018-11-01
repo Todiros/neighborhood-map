@@ -1,5 +1,5 @@
-import * as data from '../res/formated_OCM.json'
 import objArr from '../res/objArr'
+import { openChargeKey } from './API_Keys'
 
 class Station {
     constructor({AddressInfo}) {
@@ -28,13 +28,13 @@ class Station {
         console.log(
             this.title,
             this.address,
-            this.long,
+            this.lng,
             this.lat
         )
     }
 }
 
-const getAllStations = () => {
+const getTest = () => {
     let stations = []
     Array.prototype.forEach.call(objArr, station => {
         station = new Station(station).GetAddressInfo()
@@ -45,5 +45,16 @@ const getAllStations = () => {
     return stations
 }
 
-export { Station, getAllStations } 
+const getAll = () =>
+    fetch(openChargeKey)
+        .then(res => res.json())
+        .then(data => {
+            const stations = data.map(station => {
+                return new Station(station).GetAddressInfo()
+            })
+
+            return stations
+        })
+
+export { Station, getTest, getAll} 
 

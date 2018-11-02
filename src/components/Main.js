@@ -5,11 +5,8 @@ import Marker from './Marker'
 import MarkerImage from '../res/img/location-pin-add-2-solid.svg'
 
 class Main extends Component {
-    constructor() {
-        super()
-        this.state = {
-            markers: []
-        }
+    state = {
+        markers: []
     }
 
     componentDidMount() {
@@ -36,11 +33,10 @@ class Main extends Component {
             )
         })
 
-        
         const asyncGet = async () => {
             try{
                 await getAllPromise.then(stations => {
-                    this.setMarkers(stations) 
+                    this.setMarkers(stations)
                 })
             } catch (e) {}
         }
@@ -49,7 +45,7 @@ class Main extends Component {
     }
  
     render() {
-        return <MapContainer stations={this.state.markers}/>
+        return <MapContainer markers={this.state.markers}/>
     }
 }
 

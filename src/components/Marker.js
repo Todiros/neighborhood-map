@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class Marker extends Component {
-    render() {
-        return <img src={this.props.image} className='marker'></img>
-    }
+const Marker = props => {
+    return <img src={props.image} className='marker'></img>
 }
 
-export default Marker
+Marker.propTypes = {
+    image: PropTypes.string.isRequired
+}
+
+export default Marker 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import MapContainer from './MapContainer'
-import { getAll } from '../js/StationsAPI'
+import { getTest, getAll } from '../js/StationsAPI'
 import Marker from './Marker'
-import MarkerImage from '../res/img/location-pin-add-2-solid.svg'
 
 class Main extends Component {
     state = {
@@ -19,7 +18,6 @@ class Main extends Component {
                 lat={station.lat}
                 lng={station.lng}
                 title={station.title}
-                image={MarkerImage}
             />
         )
 
@@ -29,7 +27,7 @@ class Main extends Component {
     getAllStations() {
         let getAllPromise = new Promise(resolve => { 
             resolve(
-                getAll()
+                getTest()
             )
         })
 

@@ -1,10 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
-import PropTypes from 'prop-types'
+import SideMenuButton from './SideMenuButton'
+import { getWindowWidth } from '../js/ScreenWidth'
 
 const MapContainer = props => {
-    const { center, zoom } = props.map
+    let { center, zoom } = props.map
+
+    if (getWindowWidth() < 800) {
+        center = {
+            lat: 42.72,
+            lng: 23.35
+        }
+        zoom = 11
+    }
 
     return (
         <div id="map">
@@ -15,6 +25,7 @@ const MapContainer = props => {
             >
                 {props.markers}
             </GoogleMap>
+            <SideMenuButton />
         </div>
     )
 }

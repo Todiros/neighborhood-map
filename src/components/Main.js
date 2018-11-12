@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MapContainer from './MapContainer'
 import { getTest, getAll } from '../js/StationsAPI'
 import Marker from './Marker'
+import StationInfoBox from './StationInfoBox'
 
 class Main extends Component {
     state = {
@@ -12,13 +13,19 @@ class Main extends Component {
         this.getAllStations()
     }
 
+    onMarkerClick = (marker) => {
+        console.log(`The marker (${marker.props.title}) was clicked`)
+    }
+
     setMarkers(stationsArr) {
         const markers = stationsArr.map(station =>
             <Marker key={station.lat + station.lng}
                 lat={station.lat}
                 lng={station.lng}
                 title={station.title}
-            />
+                onClick={this.onMarkerClick}
+            >
+            </Marker>
         )
 
         this.setState({ markers })

@@ -3,14 +3,18 @@ import PropTypes from 'prop-types'
 
 class StationInfoBox extends Component {
     state = {
-        displayInfoBox: this.props.isMarkerClicked
+        displayInfoBox: false
     }
 
     componentWillReceiveProps() {
-        this.setState({
-            displayInfoBox: this.props.isMarkerClicked
-        })
-        console.log('RECEIVED PROPS', this.props.isMarkerClicked)
+        // console.log('RECEIVED PROPS', this.props.station)
+    }
+
+    handleClick = () => {
+        this.props.onClick(this)
+        this.state.displayInfoBox ? 
+            this.hideInfoBox() :
+            this.showInfoBox()
     }
 
     hideInfoBox = () => {
@@ -27,13 +31,17 @@ class StationInfoBox extends Component {
                                 'info-box hidden'
 
         return (
-            <div className={displayClass}>
+            <div className={displayClass} onClick={this.handleClick}>
                 <h1>TOOLTIP YAY!</h1>
                 <button className='info-box-exit-button' onClick={this.hideInfoBox}>CLOSE</button>
             </div>
         )
     }
 }
+
+// StationInfoBox.propTypes = {
+
+// }
 
 
 export default StationInfoBox 

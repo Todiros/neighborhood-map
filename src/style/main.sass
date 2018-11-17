@@ -29,10 +29,21 @@ div
   transition: 0.2s ease-in-out
 
 .info-box
-  postion: absolute
-  width: 100px
-  height: 100px
-  background: rgba(255,255,255,.3);
+  postion: relative
+  width: 150px
+  height: 200px
+  background: rgba(0,0,0,.7)
+  border: 2px solid $txtColorLightBlue 
+  border-radius: 5px
+
+  .info-box-content
+    color: orange
+    padding: 20px
+    word-wrap: break-word
+
+  .info-box-exit-button
+    display: block
+    margin: 80px auto 0
 
 .hidden
   display: none

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
 import SideMenuButton from './SideMenuButton'
-import StationInfoBox from './StationInfoBox'
 import { getWindowWidth } from '../js/ScreenWidth'
 
 const MapContainer = props => {

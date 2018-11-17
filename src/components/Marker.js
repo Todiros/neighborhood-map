@@ -28,7 +28,7 @@ class Marker extends Component {
     render() {
         return (
             <span>
-                <img src={StationPin} width="36px" className='marker'></img>
+                <img src={StationPin} width="36px" className='marker' onClick={this.props.onMarkerClick}></img>
                 {/* <StationInfoBox isMarkerClicked={this.state.clicked}/> */}
             </span>
         )

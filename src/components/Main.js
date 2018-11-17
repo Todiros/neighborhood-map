@@ -7,6 +7,7 @@ import StationInfoBox from './StationInfoBox'
 
 class Main extends Component {
     state = {
+        stations: [],
         markers: []
     }
 
@@ -14,25 +15,21 @@ class Main extends Component {
         this.getAllStations()
     }
 
-    // onMarkerClick = (marker) => {
-    //     console.log(`The marker (${marker.props.title}) was clicked`)
-    // }
-
-    // setMarkers(stationsArr) {
-    //     const markers = stationsArr.map(station =>
-    //         <Marker key={station.lat + station.lng}
-    //             lat={station.lat}
-    //             lng={station.lng}
-    //             title={station.title}
-    //             onClick={this.onMarkerClick}
-    //         >
-    //         </Marker>
-    //     )
-
-    //     this.setState({ markers })
-    // }
-
     setMarkers(stationsArr) {
+        const markers = stationsArr.map(station =>
+            <Marker key={station.lat + station.lng}
+                lat={station.lat}
+                lng={station.lng}
+                title={station.title}
+                onClick={this.onMarkerClick}
+            >
+            </Marker>
+        )
+
+        this.setState({ markers })
+    }
+
+    setMarkerContainer(stationsArr) {
         const markers = stationsArr.map(station =>
             <MarkerContainer 
                 key={station.lat + station.lng} 
@@ -45,6 +42,31 @@ class Main extends Component {
         this.setState({ markers })
     }
 
+    setMarkerContainerAsync(stationsArr) {
+        let setMarkersPromise = new Promise(resolve => {
+            resolve( 
+                stationsArr.map(station =>
+                    <MarkerContainer 
+                        key={station.lat + station.lng} 
+                        lat={station.lat}
+                        lng={station.lng}
+                        station={station}
+                    />
+                )
+            )
+        })
+
+        const asyncSet = async () => {
+            try {
+                await setMarkersPromise.then(markers => {
+                    this.setState({ markers })
+                })
+            } catch (e) {}
+        }
+
+        asyncSet()
+    }
+
     getAllStations() {
         let getAllPromise = new Promise(resolve => { 
             resolve(
@@ -55,7 +77,7 @@ class Main extends Component {
         const asyncGet = async () => {
             try{
                 await getAllPromise.then(stations => {
-                    this.setMarkers(stations)
+                    this.setMarkerContainer(stations)
                 })
             } catch (e) {}
         }

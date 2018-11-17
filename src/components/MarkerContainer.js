@@ -5,27 +5,27 @@ import StationInfoBox from './StationInfoBox'
 
 class MarkerContainer extends Component {
     state = {
-        hovered: false,
-        clicked: false
+        infoBoxHidden: true
     }
 
+    // componentDidMount() {
+    //     this.setState({
+    //         hovered: false, 
+    //         clicked: false
+    //     })
+    // }
+    
+    showInfoBox = () => {
+        this.setState({ infoBoxHidden: false })
+    }
+    
+    // handleOnClick = () => {
+    //     this.props.onClick(this)
+    //     this.showInfoBox()
+    // }
+    
     onMarkerClick = (marker) => {
         console.log(`The marker (${marker.props.title}) was clicked`)
-    }
-
-    componentDidMount() {
-        this.setState({
-            hovered: false, 
-            clicked: false
-         })
-    }
-
-    showInfoBox = () => {
-        this.setState({ clicked: true })
-    }
-
-    handleOnClick = () => {
-        this.props.onClick(this)
         this.showInfoBox()
     }
 
@@ -35,11 +35,9 @@ class MarkerContainer extends Component {
         return (
             <span>
                 <Marker
-                    lat={lat}
-                    lng={lng}
-                    title={title}
+                    onMarkerClick={this.onMarkerClick}
                 />
-                <StationInfoBox station={this.props.station} onClick={this.onMarkerClick}/>
+                { !this.state.infoBoxHidden ? <StationInfoBox station={this.props.station}/> : null}
             </span>
         )
     }

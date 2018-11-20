@@ -57,7 +57,11 @@ class Main extends Component {
     }
 
     render() {
-        return <MapContainer markers={this.state.markers}/>
+        return (
+          <div>
+              <MapContainer markers={this.state.markers}/>
+          </div>
+        )
     }
 }
 

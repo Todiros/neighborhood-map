@@ -25,6 +25,7 @@ const MapContainer = props => {
             >
                 {props.markers}
             </GoogleMap>
+            <SideMenuButton />
         </div>
     )
 }

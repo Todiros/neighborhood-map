@@ -47,9 +47,19 @@ div
 
 .hidden
   display: none
-
+  
 #side-menu-button
-  display: none /* TEMP */
+  display: block
   position: absolute
   top: 10px
   left: 10px
+  z-index: 5
+
+@media screen and (min-width: 680px)
+  #side-menu-button
+    display: none
+    
+  #root
+    width: 80%
+    right: 0
+    

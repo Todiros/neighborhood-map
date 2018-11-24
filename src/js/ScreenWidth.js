@@ -2,4 +2,10 @@ const getWindowWidth = () => {
     return window.innerWidth
 }
 
-export { getWindowWidth }
+const windowResize = () => {
+    window.addEventListener('resize', () => {
+        console.log(window.innerWidth)
+    })
+}
+
+export { getWindowWidth, windowResize }

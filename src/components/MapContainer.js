@@ -3,18 +3,22 @@ import PropTypes from 'prop-types'
 import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
 import SideMenuButton from './SideMenuButton'
-import { getWindowWidth } from '../js/ScreenWidth'
+import { getWindowWidth, windowResize } from '../js/ScreenWidth'
 
 const MapContainer = props => {
     let { center, zoom } = props.map
 
-    if (getWindowWidth() < 800) {
+    if (getWindowWidth() < 1200) {
         center = {
             lat: 42.72,
             lng: 23.35
         }
         zoom = 11
+    } else {
+        forceUpdate()
     }
+
+    // windowResize()
 
     return (
         <div id="map">

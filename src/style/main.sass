@@ -15,21 +15,18 @@ body
   bottom: 0
   width: 100%
 
-  @media screen and (min-width: $tablet)
+  @media screen and (min-width: $tabletWidth)
     display: grid
-    grid-template-columns: minmax(250px, 25%) 1fr
+    grid-template-columns: minmax(261px, 23.60%) 1fr
 
 #map 
   height: 100vh
   width: 100%
-  
-  @media screen and (min-width: $tablet)
+
+  @media screen and (min-width: $tabletWidth)
     display: grid
     grid-column: 2
 
-.hidden
-  display: none
-  
 #side-menu-button
   display: block
   position: absolute
@@ -37,7 +34,10 @@ body
   left: 10px
   z-index: 5
 
-  @media screen and (min-width: $tablet)
+  @media screen and (min-width: $tabletWidth)
     display: none
 
+.hidden
+  display: none
+  
     

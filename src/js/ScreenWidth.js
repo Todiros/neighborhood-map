@@ -1,11 +1,12 @@
-const getWindowWidth = () => {
-    return window.innerWidth
+const getWindowSize = () => {
+    return {width: window.innerWidth, height: window.innerHeight}
 }
 
+// Dynamically update map center based on screen width
 const windowResize = () => {
     window.addEventListener('resize', () => {
-        console.log(window.innerWidth)
+        return window.innerWidth
     })
 }
 
-export { getWindowWidth, windowResize }
+export { getWindowSize, windowResize }

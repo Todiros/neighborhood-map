@@ -5,7 +5,9 @@ import Marker from './Marker'
 import MarkerContainer from './MarkerContainer'
 
 class Main extends Component {
-    state = { markers: []}
+    state = { 
+        markers: []
+    }
 
     componentDidMount() {
         this.getAllStations()

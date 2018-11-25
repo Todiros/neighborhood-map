@@ -3,29 +3,38 @@ import PropTypes from 'prop-types'
 import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
 import SideMenuButton from './SideMenuButton'
-import { getWindowWidth, windowResize } from '../js/ScreenWidth'
+import { getWindowSize } from '../js/ScreenWidth'
 
 const MapContainer = props => {
-    let { center, zoom } = props.map
+    let { map } = props
+    const windowSize = getWindowSize()
 
-    if (getWindowWidth() < 1200) {
-        center = {
-            lat: 42.72,
-            lng: 23.35
+    const setMapCenter = (lat = 42.72, lng = 23.35, zoom = 11) => {
+        return {
+            center: {
+                lat: lat,
+                lng: lng
+            },
+            zoom: zoom
         }
-        zoom = 11
-    } else {
-        forceUpdate()
     }
 
-    // windowResize()
+    windowSize.width > windowSize.height ?
+        windowSize.width > 1100 ?
+            map = setMapCenter(42.73, 25.49, 8)
+        : windowSize.width > 1800 ? 
+            map = setMapCenter(42.73, 25.49, 13)
+        : null
+    : windowSize.width > 860 ?
+        map = setMapCenter(42.71, 23.33, 12)
+        : null
 
     return (
         <div id="map">
             <GoogleMap
                 bootstrapURLKeys={{key: googleMapsKey}}
-                defaultCenter={center}
-                defaultZoom={zoom}
+                defaultCenter={map.center}
+                defaultZoom={map.zoom}
             >
                 {props.markers}
             </GoogleMap>
@@ -37,10 +46,10 @@ const MapContainer = props => {
 MapContainer.defaultProps = {
     map: {
         center: {
-            lat: 42.73,
-            lng: 25.49
+            lat: 42.72,
+            lng: 23.35
         },
-        zoom: 8
+        zoom: 11
     }
 }
 

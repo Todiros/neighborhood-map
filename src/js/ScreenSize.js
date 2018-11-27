@@ -2,10 +2,13 @@ const getWindowSize = () => {
     return {width: window.innerWidth, height: window.innerHeight}
 }
 
-// Dynamically update map center based on screen width
+/* Get the screen size on screen resize 
+TODO: optimize performance with a setTimeout func
+Needs polyfill for IE
+*/ 
 const windowResize = () => {
     window.addEventListener('resize', () => {
-        return window.innerWidth
+        return {width: window.innerWidth, height: window.innerHeight}
     })
 }
 

@@ -4,6 +4,7 @@ import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
 import SideMenuButton from './SideMenuButton'
 import { getMapCenter } from '../js/getMapCenter'
+import SideBar from './SideBar';
 
 class MapContainer extends Component {
     state = {
@@ -30,6 +31,7 @@ class MapContainer extends Component {
                     {this.props.markers}
                 </GoogleMap>
                 <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/>
+                <SideBar openState={this.state.sidemenu} onClick={this.onButtonPress}/>
             </div>
         )
     }

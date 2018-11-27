@@ -1,10 +1,11 @@
 import React from 'react'
 import ArrowImage from '../res/img/arrow.svg'
 
-const SideMenuButton = () => {
+const SideMenuButton = props => {
+    console.log(props.openState)
     return (
-        <div id="side-menu-button">
-            <img src={ArrowImage} className="arrow" width="60px"></img>
+        <div id="side-menu-button" onClick={props.onClick}>
+            <img src={ArrowImage} id={props.openState} width="60px"></img>
         </div>
     )
 }

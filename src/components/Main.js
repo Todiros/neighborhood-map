@@ -3,10 +3,13 @@ import MapContainer from './MapContainer'
 import { getTest, getAll } from '../js/StationsAPI'
 import Marker from './Marker'
 import MarkerContainer from './MarkerContainer'
+import SideMenuButton from './SideMenuButton'
+import SideBar from './SideBar';
 
 class Main extends Component {
     state = { 
-        markers: []
+        markers: [],
+        stations: []
     }
 
     componentDidMount() {
@@ -23,6 +26,7 @@ class Main extends Component {
         const asyncGet = async () => {
             try{
                 await getAllPromise.then(stations => {
+                    this.setState({ stations })
                     this.setMarkerContainer(stations)
                 })
             } catch (e) {}
@@ -59,7 +63,16 @@ class Main extends Component {
     }
 
     render() {
-        return (<MapContainer markers={this.state.markers}/>)
+        return (
+            <main id="content-wrap">
+                <SideBar stations={this.state.stations} deviceType={'on-desktop'}/>
+                <MapContainer markers={this.state.markers} stations={this.state.stations}/>
+                {/* TODO - ADD SideMenuButton AND SideBar HERE
+                    <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/> 
+                    <SideBarContainer openState={this.state.sidemenu} onClick={this.onButtonPress}/>
+                */}
+            </main>
+        )
     }
 }
 

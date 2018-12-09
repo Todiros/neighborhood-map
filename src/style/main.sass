@@ -1,13 +1,14 @@
 @import 'partials/_0vars.sass'
 @import 'partials/_marker.sass'
+@import 'partials/_sidebar.sass'
   
 body
   margin: 0
   padding: 0
-  background: $bgColorDarkGray
+  background: $colorDarkGray
   text-align: center
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-  color: $txtColorLightBlue
+  color: $colorLightBlue
 
 #root
   position: absolute
@@ -15,6 +16,7 @@ body
   bottom: 0
   width: 100%
 
+#content-wrap
   @media screen and (min-width: $tabletWidth)
     display: grid
     grid-template-columns: minmax(261px, 23.60%) 1fr
@@ -27,48 +29,6 @@ body
   @media screen and (min-width: $tabletWidth)
     display: grid
     grid-column: 2
-
-#side-menu-button
-  display: block
-  position: absolute
-  top: 10px
-  left: 10px
-  z-index: 5
-
-  #opened
-    transform: rotate(180deg)
-    transition-duration: 0.2s
-
-  #closed 
-    transform: rotate(0deg)
-    transition-duration: 0.5s
-
-  @media screen and (min-width: $tabletWidth)
-    display: none
-
-
-.hidden
-  display: none
-
-#mobile-side-bar
-  display: block
-  position: absolute
-  background: $bgColorDarkGray
-  width: 100%
-  height: 100%
-  top: 0
-  left: -100%
-  
-  @media screen and (min-width: $tabletWidth)
-    display: none
-
-.side-bar-opened
-  transform: translateX(100%)
-  transition-duration: 0.4s
-
-.side-bar-closed
-  transform: translateX(0)
-  transition-duration: 0.3s
 
   
     

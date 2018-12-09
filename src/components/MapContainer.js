@@ -4,14 +4,16 @@ import GoogleMap from 'google-map-react'
 import { googleMapsKey } from '../js/API_Keys'
 import SideMenuButton from './SideMenuButton'
 import { getMapCenter } from '../js/getMapCenter'
-import SideBar from './SideBar';
+import SideBarContainer from './SideBarContainer';
 
 class MapContainer extends Component {
     state = {
         sidemenu: 'closed'
     }
 
-    onButtonPress = () => {
+    onButtonPress = (e) => {
+        e.preventDefault()
+
         this.state.sidemenu === 'closed' ? 
             this.setState({ sidemenu: 'opened' })
         : this.setState({ sidemenu: 'closed' })
@@ -31,7 +33,7 @@ class MapContainer extends Component {
                     {this.props.markers}
                 </GoogleMap>
                 <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/>
-                <SideBar openState={this.state.sidemenu} onClick={this.onButtonPress}/>
+                <SideBarContainer openState={this.state.sidemenu} stations={this.props.stations}/>
             </div>
         )
     }

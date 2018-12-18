@@ -60,6 +60,7 @@
 			display: grid
 
 	#logo
+		background: #151617
 		grid-row: 1
 		font-size: 25px
 		border-bottom: 1px solid $colorLightYellow
@@ -76,28 +77,50 @@
 		display: grid
 		grid-row: 2
 		grid-template-rows: 60px fit-content(50%) minmax(50px, auto)
+		grid-template-columns: minmax(20px, 1fr) fit-content(80%) minmax(20px, 1fr)
 
 		.nav-title
 			margin: 0
+			text-align: left
 			grid-row: 1
+			grid-column: 2
+			align-self: center
+			text-transform: uppercase
+			color: $colorLightYellow
 
 		.stations-list
 			display: grid
-			grid-template-columns: minmax(20px, 1fr) fit-content(80%) minmax(20px, 1fr)
 			margin: 0
 			padding: 0 
 			grid-row: 2
+			grid-column: 2
 
 			li
-				grid-column: 2
 				list-style: none
 				text-align: left
 
 		.filter-wrap
 			grid-row: 3
+			grid-column: 2
 			padding-top: 20px
 
-			input 
+			input
+				margin: 0
+				padding: 0 5px 0
+				width: calc(100% - 80px)
+				height: 25px
+				background: $colorLightYellow
+				// color: #946d58
+				border: none
+				font-size: 12px
+
+			.filter-button
+				background: none
+				border: 1px solid $colorLightYellow
+				color: $colorLightYellow
+				width: 70px
+				height: 25px
+				font-size: 12px
 		
 
 

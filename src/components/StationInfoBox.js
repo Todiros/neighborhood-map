@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 
 class StationInfoBox extends Component {
     state = {
-        shown: false
+        shown: false,
+        displayData: []
+    }
+
+    componentWillMount() {
+        this.createDataList()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -16,16 +21,35 @@ class StationInfoBox extends Component {
         this.setState({ shown: false })
     }
 
+    createDataList = () => {
+        const { station } = this.props
+        let displayData = []
+
+        for (let key in station) {
+            if (station.hasOwnProperty(key) && key != 'title') {
+                displayData.push(<li className='info-box-item' key={key}>{station[key]}</li>)
+            }
+        }
+
+        this.setState({ displayData })
+    }
+
     render() {
         const displayClass = this.state.shown ?
                                 'info-box' :
                                 'info-box hidden'
 
+        const { station } = this.props
+
         return (
             <div className={displayClass}>
-                <h3 className='info-box-content'>{this.props.station.title}!</h3>
+                <h3 className='info-box-title'>{station.title}</h3>
 
-                <button className='info-box-exit-button' onClick={this.hideInfoBox}>CLOSE</button>
+                <section className='info-box-content'>
+                    {this.state.displayData}
+                </section>
+
+                <button className='button info-box-exit-button' onClick={this.hideInfoBox}>CLOSE</button>
             </div>
         )
     }

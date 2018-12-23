@@ -20,7 +20,7 @@ class SideBar extends Component {
                     </ul>
                     <div className="filter-wrap">
                         <input type="text" placeholder="NAME / ADDRESS"></input>
-                        <button className="filter-button">FILTER</button>
+                        <button className="button filter-button">FILTER</button>
                     </div>
                 </nav>
             </section>

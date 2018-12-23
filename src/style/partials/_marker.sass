@@ -14,21 +14,25 @@
     width: 60px
 
 .info-box
-  postion: relative
-  width: 150px
-  height: 200px
-  background: rgba(0,0,0,.8)
+  // display: grid
+  // grid-template-rows: 20% auto 20%
+  position: absolute
+  width: 180px
+  height: auto
+  padding: 5px 15px
+  background: rgba($colorDarkGrayRGB, .95)
   border: 2px solid $colorLightYellow
   border-radius: 5px
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);
+  box-shadow: 0px 0px 10px 1px rgba($colorDarkGrayRGB, .8);
 
   .info-box-content
     color: $colorLightBlue
     padding: 20px
     word-wrap: break-word
+    grid-row: 2
 
   .info-box-exit-button
-    display: block
+    display: absolute
+    transform: translateY(-10px)
+    grid-row: 3
     margin: 80px auto 0

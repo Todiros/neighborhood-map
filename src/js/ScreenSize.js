@@ -12,4 +12,10 @@ const windowResize = () => {
     })
 }
 
-export { getWindowSize, windowResize }
+const getCoord = () =>  {
+    document.addEventListener('click', (e) => {
+        console.log(e.clientX, e.clientY)
+    })
+}
+
+export { getWindowSize, windowResize, getCoord }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Marker from './Marker'
 import StationInfoBox from './StationInfoBox'
+import { getCoord } from '../js/ScreenSize'
 
 class MarkerContainer extends Component {
     state = {
@@ -16,6 +17,7 @@ class MarkerContainer extends Component {
     
     onMarkerClick = () => {
         this.showInfoBox()
+        getCoord()
     }
 
     showInfoBox = () => {

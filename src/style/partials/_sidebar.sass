@@ -46,7 +46,7 @@
 // SIDE BAR
 #side-bar
 	display: grid
-	grid-template-rows: 100px 1fr
+	grid-template-rows: 80px 1fr
 	height: 100%
 	min-width: 280px
 
@@ -67,7 +67,7 @@
 		border-bottom: 1px solid $colorLightYellow
 
 		h1 
-			margin-top: 20px
+			margin-top: 10px
 
 		.logo-styling
 			font-size: 20px
@@ -77,7 +77,7 @@
 	#stations-list-container
 		display: grid
 		grid-row: 2
-		grid-template-rows: 60px fit-content(50%) minmax(50px, auto)
+		grid-template-rows: 60px fit-content(calc(100vh - 190px)) 50px
 		grid-template-columns: minmax(20px, 1fr) fit-content(80%) minmax(20px, 1fr)
 
 		.nav-title
@@ -92,9 +92,23 @@
 		.stations-list
 			display: grid
 			margin: 0
-			padding: 0 
+			padding: 0 10px 0 0
 			grid-row: 2
 			grid-column: 2
+			overflow-y: auto
+  
+			&::-webkit-scrollbar
+				width: 10px
+  
+			&::-webkit-scrollbar-track
+				background: black
+
+			&::-webkit-scrollbar-thumb
+				background: $colorLightYellow
+				height: 20px
+
+			&::-webkit-scrollbar-thumb:hover
+				background: $colorLightBlue
 
 			li
 				list-style: none
@@ -103,7 +117,7 @@
 		.filter-wrap
 			grid-row: 3
 			grid-column: 2
-			padding-top: 20px
+			padding-top: 10px
 
 			input
 				margin: 0

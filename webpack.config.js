@@ -15,7 +15,8 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         allowedHosts: ['.codeanyapp.com'],
-        // host: '0.0.0.0',
+        // http://port-3001.maps-todiros673420.codeanyapp.com/
+        host: '0.0.0.0',
         port: 3001,
         hot: true
     },

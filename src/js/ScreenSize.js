@@ -12,10 +12,11 @@ const windowResize = () => {
     })
 }
 
-const getCoord = () =>  {
-    document.addEventListener('click', (e) => {
-        console.log(e.clientX, e.clientY)
-    })
+const getMapCoords = () =>  {
+    const map = document.getElementById('map')
+    const coords = map.getBoundingClientRect()
+    
+    return coords
 }
 
-export { getWindowSize, windowResize, getCoord }
+export { getWindowSize, windowResize, getMapCoords }

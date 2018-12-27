@@ -42,7 +42,7 @@ class StationInfoBox extends Component {
         const { station } = this.props
 
         return (
-            <div className={displayClass}>
+            <div className={displayClass + ' ' + this.props.markerPos}>
                 <h3 className='info-box-title'>{station.title}</h3>
 
                 <section className='info-box-content'>

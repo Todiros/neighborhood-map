@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Marker from './Marker'
 import StationInfoBox from './StationInfoBox'
-import { getCoord } from '../js/ScreenSize'
+import { getMapCoords } from '../js/ScreenSize'
 
 class MarkerContainer extends Component {
     state = {
-        infoBoxShown: false
+        infoBoxShown: false,
+        markerPos: ''
     }
 
     componentWillReceiveProps() {
@@ -15,9 +16,22 @@ class MarkerContainer extends Component {
         })
     }
     
-    onMarkerClick = () => {
+    onMarkerClick = (e) => {
+        const mapCoords = getMapCoords()
+        let markerPos = ''
+
+        if (e.clientX + 220 > mapCoords.right) {
+            markerPos += 'left'
+        }
+        
+        if (e.clientY + 320 > mapCoords.bottom) {
+            markerPos ? markerPos += ' top'  : markerPos = 'top'
+        }
+
+        markerPos != this.state.markerPos ?
+            this.setState({ markerPos }) : null
+
         this.showInfoBox()
-        getCoord()
     }
 
     showInfoBox = () => {
@@ -30,7 +44,7 @@ class MarkerContainer extends Component {
                 <Marker
                     onMarkerClick={this.onMarkerClick}
                 />
-                <StationInfoBox station={this.props.station} isInfoBoxShown={this.state.infoBoxShown}/>
+                <StationInfoBox station={this.props.station} isInfoBoxShown={this.state.infoBoxShown} markerPos={this.state.markerPos}/>
             </span>
         )
     }

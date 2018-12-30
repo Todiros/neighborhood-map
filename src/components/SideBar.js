@@ -14,7 +14,7 @@ class SideBar extends Component {
                     <ul className="stations-list">
                         {this.props.stations.map(station => 
                             <li key={station.lat + station.lng}>
-                                {station.title}
+                                <a className='station-link' href='javascript:void(0)'>{station.title}</a>
                             </li>
                         )}
                     </ul>

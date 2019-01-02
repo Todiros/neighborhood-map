@@ -22,8 +22,14 @@ class SideBar extends Component {
     }
 
     onFilterClick = () => {
-        const fieldInput = document.getElementById('station-filter-input').value
-        const filteredStations = this.filterStations(fieldInput)
+        const fieldInput = document.getElementsByClassName('station-filter-input')
+        let filteredStations = []
+
+        if(this.props.deviceType) {
+            filteredStations = this.filterStations(fieldInput[0].value)
+        } else {
+            filteredStations = this.filterStations(fieldInput[1].value)
+        }
 
         this.setState({ filteredStations })
     }
@@ -33,11 +39,11 @@ class SideBar extends Component {
         const stations = this.state.filteredStations.length >= 1 ? this.state.filteredStations : this.props.stations
 
         return (
-            <section id="side-bar" className={deviceType}>
-                <header id="logo">
+            <section className={"side-bar " + deviceType}>
+                <header className="logo">
                     <h1>CHARGED<span className="logo-styling">Map</span></h1>
                 </header>
-                <nav id="stations-list-container">
+                <nav className="stations-list-container">
                     <h2 className="nav-title">Stations List</h2>
                     <ul className="stations-list">
                         {
@@ -49,7 +55,7 @@ class SideBar extends Component {
                         }
                     </ul>
                     <div className="filter-wrap">
-                        <input id='station-filter-input' type="text" placeholder="NAME / ADDRESS"></input>
+                        <input className='station-filter-input' type="text" placeholder="NAME / ADDRESS"></input>
                         <button className="button filter-button" onClick={this.onFilterClick}>FILTER</button>
                     </div>
                 </nav>

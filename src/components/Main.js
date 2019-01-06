@@ -19,7 +19,7 @@ class Main extends Component {
     getAllStations() {
         let getAllPromise = new Promise(resolve => { 
             resolve(
-                getTest()
+                getAll()
             )
         })
 

@@ -4,12 +4,14 @@ import { getTest, getAll } from '../js/StationsAPI'
 import Marker from './Marker'
 import MarkerContainer from './MarkerContainer'
 import SideMenuButton from './SideMenuButton'
+import SideBarContainer from './SideBarContainer'
 import SideBar from './SideBar';
 
 class Main extends Component {
     state = { 
         markers: [],
-        stations: []
+        stations: [],
+        sidemenu: 'closed'
     }
 
     componentDidMount() {
@@ -37,7 +39,7 @@ class Main extends Component {
  
     setMarkers(stationsArr) {
         const markers = stationsArr.map(station =>
-            <Marker key={station.lat + station.lng}
+            <Marker key={station.id}
                 lat={station.lat}
                 lng={station.lng}
                 title={station.title}
@@ -52,7 +54,7 @@ class Main extends Component {
     setMarkerContainer(stationsArr) {
         const markers = stationsArr.map(station =>
             <MarkerContainer 
-                key={station.lat + station.lng} 
+                key={station.id} 
                 lat={station.lat}
                 lng={station.lng}
                 station={station}
@@ -62,15 +64,29 @@ class Main extends Component {
         this.setState({ markers })
     }
 
+    onButtonPress = (e) => {
+        e.preventDefault()
+
+        this.state.sidemenu === 'closed' ? 
+            this.setState({ sidemenu: 'opened' })
+        : this.setState({ sidemenu: 'closed' })
+    }
+
+    onStationClick = (id) => {
+        this.state.stations.forEach(station => {
+            if (id == station.id)
+                // TODO: Center Map and Open Info Box
+                console.log(station)
+        })
+    }
+
     render() {
         return (
             <main id="content-wrap">
-                <SideBar stations={this.state.stations} deviceType={'on-desktop'}/>
+                <SideBar stations={this.state.stations} deviceType={'on-desktop'} onStationClick={this.onStationClick}/>
                 <MapContainer markers={this.state.markers} stations={this.state.stations}/>
-                {/* TODO - ADD SideMenuButton AND SideBar HERE
-                    <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/> 
-                    <SideBarContainer openState={this.state.sidemenu} onClick={this.onButtonPress}/>
-                */}
+                <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/>
+                <SideBarContainer openState={this.state.sidemenu} stations={this.state.stations} onStationClick={this.onStationClick}/>
             </main>
         )
     }

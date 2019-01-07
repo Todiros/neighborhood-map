@@ -5,7 +5,7 @@ class SideBarContainer extends Component {
     render () {
         return (
             <aside id='side-bar-container' className={'mobile side-bar-' + this.props.openState}>
-                <SideBar stations={this.props.stations}/>
+                <SideBar stations={this.props.stations} onStationClick={this.props.onStationClick}/>
             </aside>
         )
     }

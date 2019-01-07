@@ -48,8 +48,8 @@ class SideBar extends Component {
                     <ul className="stations-list">
                         {
                             stations.map(station =>
-                                <li key={station.lat + station.lng}>
-                                    <a className='station-link' href='javascript:void(0)'>{station.title}</a>
+                                <li key={station.id}>
+                                    <a className='station-link' href='javascript:void(0)' onClick={this.props.onStationClick.bind(this, station.id)}>{station.title}</a>
                                 </li>
                             )
                         }

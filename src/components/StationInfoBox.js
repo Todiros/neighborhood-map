@@ -25,9 +25,18 @@ class StationInfoBox extends Component {
         const { station } = this.props
         let displayData = []
 
-        for (let key in station) {
-            if (station.hasOwnProperty(key) && key != 'title') {
-                displayData.push(<li className='info-box-item' key={key}>{station[key]}</li>)
+        let stationInfo = {
+            town: station.town + ', ' + station.postcode,
+            address: station.address,
+            coordinates: station.lat.toFixed(2) + ' x ' + station.lng.toFixed(2),
+            usageType: station.usageType,
+            status: station.isOperational ? 'Working / ' + station.statusTitle : 'Not Working / ' + station.statusTitle,
+            connectors: station.connectors.join(', ')
+        }
+
+        for (let key in stationInfo) {
+            if (stationInfo.hasOwnProperty(key)) {
+                displayData.push(<li className='info-box-item' key={key}>{stationInfo[key]}</li>)
             }
         }
 

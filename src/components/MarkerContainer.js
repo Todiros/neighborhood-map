@@ -10,10 +10,11 @@ class MarkerContainer extends Component {
         markerPos: ''
     }
 
-    componentWillReceiveProps() {
-        this.setState({
-            infoBoxShown: false
-        })
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.clickedId != 0) 
+            this.setState({ infoBoxShown: true })       
+        else
+            this.setState({ infoBoxShown: false })
     }
     
     onMarkerClick = (e) => {

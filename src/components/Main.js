@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import MapContainer from './MapContainer'
 import { getTest, getAll } from '../js/StationsAPI'
-import Marker from './Marker'
 import MarkerContainer from './MarkerContainer'
 import SideMenuButton from './SideMenuButton'
 import SideBarContainer from './SideBarContainer'
@@ -11,7 +10,8 @@ class Main extends Component {
     state = { 
         markers: [],
         stations: [],
-        sidemenu: 'closed'
+        sidemenu: 'closed',
+        clickedSidebarStationId: 0 
     }
 
     componentDidMount() {
@@ -36,20 +36,6 @@ class Main extends Component {
 
         asyncGet()
     }
- 
-    setMarkers(stationsArr) {
-        const markers = stationsArr.map(station =>
-            <Marker key={station.id}
-                lat={station.lat}
-                lng={station.lng}
-                title={station.title}
-                onClick={this.onMarkerClick}
-            >
-            </Marker>
-        )
-
-        this.setState({ markers })
-    }
 
     setMarkerContainer(stationsArr) {
         const markers = stationsArr.map(station =>
@@ -58,6 +44,7 @@ class Main extends Component {
                 lat={station.lat}
                 lng={station.lng}
                 station={station}
+                clickedId={this.state.clickedSidebarStationId}
             />
         )
 
@@ -75,8 +62,7 @@ class Main extends Component {
     onStationClick = (id) => {
         this.state.stations.forEach(station => {
             if (id == station.id)
-                // TODO: Center Map and Open Info Box
-                console.log(station)
+                this.setState({ clickedSidebarStationId: station.id })
         })
     }
 

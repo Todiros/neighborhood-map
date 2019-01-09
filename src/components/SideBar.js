@@ -32,6 +32,7 @@ class SideBar extends Component {
         }
 
         this.setState({ filteredStations })
+        this.props.getFilteredStations(filteredStations)
     }
 
     render () {

@@ -50,7 +50,7 @@ class SideBar extends Component {
                         {
                             stations.map(station =>
                                 <li key={station.id}>
-                                    <a className='station-link' href='javascript:void(0)' onClick={this.props.onStationClick.bind(this, station.id)}>{station.title}</a>
+                                    <a className='station-link' href='javascript:void(0)' onClick={this.props.onStationClick.bind(this, station.lat, station.lng)}>{station.title}</a>
                                 </li>
                             )
                         }

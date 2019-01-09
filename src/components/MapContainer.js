@@ -5,6 +5,14 @@ import { googleMapsKey } from '../js/API_Keys'
 import { getMapCenter } from '../js/getMapCenter'
 
 class MapContainer extends Component {
+    state = {
+        newCenter: {}
+    }
+
+    apiIsLoaded = map => {
+        map.panTo(this.props.map.center)
+    }
+
     render() {
         let { map } = this.props
         map = getMapCenter(map)
@@ -13,8 +21,10 @@ class MapContainer extends Component {
             <div id="map">
                 <GoogleMap
                     bootstrapURLKeys={{key: googleMapsKey}}
-                    defaultCenter={map.center}
+                    center={map.center}
                     defaultZoom={map.zoom}
+                    yesIWantToUseGoogleMapApiInternals
+                    onGoogleApiLoaded={({ map }) => this.apiIsLoaded(map)}
                 >
                     {this.props.markers}
                 </GoogleMap>
@@ -23,15 +33,15 @@ class MapContainer extends Component {
     }
 }
 
-MapContainer.defaultProps = {
-    map: {
-        center: {
-            lat: 42.72,
-            lng: 23.35
-        },
-        zoom: 11
-    }
-}
+// MapContainer.defaultProps = {
+//     map: {
+//         center: {
+//             lat: 42.72,
+//             lng: 23.35
+//         },
+//         zoom: 11
+//     }
+// }
 
 MapContainer.propTypes = {
     markers: PropTypes.array.isRequired

@@ -12,7 +12,15 @@ class Main extends Component {
         stations: [],
         filteredStations: [],
         sidemenu: 'closed',
-        clickedSidebarStationId: 0
+        clickedSidebarStationId: 0,
+
+        map: {
+            center: {
+                lat: 42.72,
+                lng: 23.35
+            },
+            zoom: 11
+        }
     }
     
     componentDidMount() {
@@ -23,8 +31,17 @@ class Main extends Component {
         this.setState({ filteredStations })
     }
     
-    onStationClick = (id) => {
-        this.setState({clickedSidebarStationId: id})
+    onStationClick = (lat, lng) => {
+        this.setState({clickedSidebarStationId: lat + lng})
+
+        const newMapCenter = {
+            center: {
+                lat: lat,
+                lng: lng
+            },
+            zoom: 11
+        }
+        this.setState({map: newMapCenter})
     }
     
     getAllStations() {
@@ -85,7 +102,7 @@ class Main extends Component {
         return (
             <main id="content-wrap">
                 <SideBar stations={this.state.stations} deviceType={'on-desktop'} onStationClick={this.onStationClick} getFilteredStations={this.getFilteredStations}/>
-                <MapContainer markers={this.state.markers} stations={this.state.stations}/>
+                <MapContainer markers={this.state.markers} stations={this.state.stations} map={this.state.map}/>
                 <SideMenuButton openState={this.state.sidemenu} onClick={this.onButtonPress}/>
                 <SideBarContainer openState={this.state.sidemenu} stations={this.state.stations} onStationClick={this.onStationClick}/>
             </main>

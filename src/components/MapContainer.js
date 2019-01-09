@@ -5,10 +5,6 @@ import { googleMapsKey } from '../js/API_Keys'
 import { getMapCenter } from '../js/getMapCenter'
 
 class MapContainer extends Component {
-    state = {
-        newCenter: {}
-    }
-
     apiIsLoaded = map => {
         map.panTo(this.props.map.center)
     }
@@ -33,18 +29,9 @@ class MapContainer extends Component {
     }
 }
 
-// MapContainer.defaultProps = {
-//     map: {
-//         center: {
-//             lat: 42.72,
-//             lng: 23.35
-//         },
-//         zoom: 11
-//     }
-// }
-
 MapContainer.propTypes = {
-    markers: PropTypes.array.isRequired
+    markers: PropTypes.array.isRequired,
+    map: PropTypes.object.isRequired
 }
 
 export default MapContainer

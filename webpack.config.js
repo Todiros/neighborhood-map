@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 
 module.exports = {
     entry: './src/app.js',
@@ -71,6 +72,9 @@ module.exports = {
             template: "./src/index.html",
             filename: "./index.html"
         }),
-        new WebpackMd5Hash()
+        new WebpackMd5Hash(),
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, 'src/sw.js'),
+        })
     ]
 }

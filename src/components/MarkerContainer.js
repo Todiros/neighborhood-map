@@ -7,11 +7,29 @@ import { getMapCoords } from '../js/ScreenSize'
 class MarkerContainer extends Component {
     state = {
         infoBoxShown: false,
-        markerPos: ''
+        markerPos: '',
+        clickedId: 0
     }
 
-    componentWillReceiveProps() {
-        this.setState({ infoBoxShown: false })
+    componentWillReceiveProps(nextProps) {
+        const { clickedStationId, station } = this.props
+
+        if (this.state.clickedId == 0) {
+            if (clickedStationId.seed != nextProps.clickedStationId.seed) {
+                if (nextProps.clickedStationId.id == station.id)
+                    this.setState({ clickedId: station.id })
+            } else {
+                this.setState({ infoBoxShown: false })
+            }
+        } 
+        
+        if (this.state.clickedId != 0) {
+            this.setState({ infoBoxShown: true })
+        }
+    }
+
+    onInfoBoxClosing = () => {
+        this.setState({ clickedId: 0 })
     }
     
     onMarkerClick = (e) => {
@@ -40,9 +58,13 @@ class MarkerContainer extends Component {
         return (
             <span>
                 <Marker
-                    onMarkerClick={this.onMarkerClick}
-                />
-                <StationInfoBox station={this.props.station} isInfoBoxShown={this.state.infoBoxShown} markerPos={this.state.markerPos}/>
+                    onMarkerClick={this.onMarkerClick}/>
+                
+                <StationInfoBox 
+                    station={this.props.station} 
+                    isInfoBoxShown={this.state.infoBoxShown} 
+                    markerPos={this.state.markerPos}
+                    onInfoBoxClosing={this.onInfoBoxClosing}/>
             </span>
         )
     }

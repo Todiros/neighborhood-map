@@ -19,6 +19,7 @@ class StationInfoBox extends Component {
 
     hideInfoBox = () => {
         this.setState({ shown: false })
+        this.props.onInfoBoxClosing()
     }
 
     createDataList = () => {

@@ -13,7 +13,7 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-    onClick: PropTypes.func
+    onMarkerClick: PropTypes.func
 }
 
 export default Marker 

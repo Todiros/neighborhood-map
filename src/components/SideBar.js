@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class SideBar extends Component {
     state = {
@@ -50,7 +51,7 @@ class SideBar extends Component {
                         {
                             stations.map(station =>
                                 <li key={station.id}>
-                                    <a className='station-link' href='javascript:void(0)' onClick={this.props.onStationClick.bind(this, station.lat, station.lng)}>{station.title}</a>
+                                    <a className='station-link' href='javascript:void(0)' onClick={this.props.onStationClick.bind(this, station.lat, station.lng, station.id)}>{station.title}</a>
                                 </li>
                             )
                         }
@@ -63,6 +64,12 @@ class SideBar extends Component {
             </section>
         )
     }
+}
+
+SideBar.propTypes = {
+    stations: PropTypes.array.isRequired,
+    onStationClick: PropTypes.func.isRequired,
+    getFilteredStations: PropTypes.func.isRequired
 }
 
 export default SideBar

@@ -83,7 +83,7 @@ class Main extends Component {
                     stations={this.state.stations} 
                     filteredStations={this.state.filteredStations} 
                     map={this.state.map} 
-                    clickedStationId={this.state.clickedSidebarStation}/>
+                    clickedSidebarStation={this.state.clickedSidebarStation}/>
 
                 <SideMenuButton 
                     openState={this.state.sidemenu} 

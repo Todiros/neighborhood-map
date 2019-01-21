@@ -7,7 +7,7 @@ import MarkerContainer from './MarkerContainer'
 
 class MapContainer extends Component {
     apiIsLoaded = map => {
-        map.panTo(this.props.map.center)
+        map.panTo(map.center)
     }
 
     createMarkers(stationsArr) {
@@ -24,7 +24,7 @@ class MapContainer extends Component {
                     lat={station.lat}
                     lng={station.lng}
                     station={station}
-                    clickedStationId={this.props.clickedStationId}
+                    clickedSidebarStation={this.props.clickedSidebarStation}
                 />
             }
         )
@@ -55,7 +55,7 @@ class MapContainer extends Component {
 MapContainer.propTypes = {
     stations: PropTypes.array.isRequired,
     filteredStations: PropTypes.array.isRequired,
-    clickedStationId: PropTypes.object.isRequired,
+    clickedSidebarStation: PropTypes.object.isRequired,
     map: PropTypes.object.isRequired
 }
 

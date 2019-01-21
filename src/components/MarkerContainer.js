@@ -12,18 +12,19 @@ class MarkerContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { clickedStationId, station } = this.props
+        const { clickedSidebarStation, station } = this.props
+        const { clickedId } = this.state
 
-        if (this.state.clickedId == 0) {
-            if (clickedStationId.seed != nextProps.clickedStationId.seed) {
-                if (nextProps.clickedStationId.id == station.id)
+        if (clickedId == 0) {
+            if (clickedSidebarStation.seed != nextProps.clickedSidebarStation.seed) {
+                if (nextProps.clickedSidebarStation.id == station.id)
                     this.setState({ clickedId: station.id })
             } else {
                 this.setState({ infoBoxShown: false })
             }
         } 
         
-        if (this.state.clickedId != 0) {
+        if (clickedId != 0 && clickedId == clickedSidebarStation.id) {
             this.setState({ infoBoxShown: true })
         }
     }
@@ -71,7 +72,11 @@ class MarkerContainer extends Component {
 }
 
 MarkerContainer.propTypes = {
-    station: PropTypes.object.isRequired
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+    station: PropTypes.object.isRequired,
+    clickedSidebarStation: PropTypes.object.isRequired,
+
 }
 
 

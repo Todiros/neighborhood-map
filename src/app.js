@@ -2,14 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import Main from './components/Main'
 import './style/main.sass'
-import runtime from 'serviceworker-webpack-plugin/lib/runtime'
+import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 
 if (module.hot) {
     module.hot.accept();
 }
 
-if ('serviceWorker' in navigator) {
-    runtime.register(); 
-}
+OfflinePluginRuntime.install()
 
 render(<Main />, document.getElementById('root'))

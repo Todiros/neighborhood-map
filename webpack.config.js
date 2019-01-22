@@ -1,14 +1,15 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 module.exports = {
     entry: './src/app.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../../Projects/todiros.github.io/charge-map/'),
         filename: 'bundle.[hash].js'
     },
     devtool: 'eval-source-map',
@@ -64,6 +65,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin('dist', {}),
+        new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css'
         }),
@@ -73,8 +75,6 @@ module.exports = {
             filename: "./index.html"
         }),
         new WebpackMd5Hash(),
-        new ServiceWorkerWebpackPlugin({
-            entry: path.join(__dirname, 'src/sw.js'),
-        })
+        new OfflinePlugin()
     ]
 }

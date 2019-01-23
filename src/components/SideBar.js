@@ -61,6 +61,11 @@ class SideBar extends Component {
                         <button className="button filter-button" onClick={this.onFilterClick}>FILTER</button>
                     </div>
                 </nav>
+                <footer className='copyright-wrap'>
+                        <p className='copyright-style'>
+                            <span className='copyright-title'>Data by: </span><a href='https://openchargemap.org/site'>Open Charge Map &copy;2019</a>
+                        </p>
+                </footer>
             </section>
         )
     }

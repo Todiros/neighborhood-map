@@ -46,7 +46,7 @@
 // SIDE BAR
 .side-bar
 	display: grid
-	grid-template-rows: 80px 1fr
+	grid-template-rows: 80px 1fr 20px
 	height: 100%
 	min-width: 280px
 
@@ -77,7 +77,7 @@
 	.stations-list-container
 		display: grid
 		grid-row: 2
-		grid-template-rows: 60px calc(100vh - 190px) 50px
+		grid-template-rows: 60px calc(100vh - 200px) 40px
 		grid-template-columns: minmax(20px, 1fr) fit-content(80%) minmax(20px, 1fr)
 
 		.nav-title
@@ -143,4 +143,29 @@
 				width: 70px
 				height: 25px
 
+	.copyright-wrap
+		display: grid
+		grid-row: 3
+		white-space: nowrap
+		color: $colorLightYellow
+
+		.copyright-style
+			display: inline
+			max-width: 100%
+			margin: 0
+			padding-left: 30px
+			align-self: center
+			justify-self: left
+			font-size: 10px
+			text-transform: uppercase
+			font-style: italic
+
+			a 
+				text-decoration: none
+				color: inherit
+				font-weight: bold
+
+				&:hover, &:focus
+					text-decoration: underline
+					color: $colorLightBlue
 				

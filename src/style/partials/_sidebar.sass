@@ -8,6 +8,9 @@
   top: 10px
   left: 10px
   z-index: 5
+  
+  &:focus
+    border: 1px solid $colorLightYellow
 
   #opened
     transform: rotate(180deg)
@@ -117,9 +120,8 @@
 					text-decoration: none
 					color: inherit
 
-					&:hover
+					&:hover, &:focus
 						color: $colorLightYellow
-						// text-shadow: 2px 2px $colorDarkGrayRGB
 						text-decoration: underline
 
 		.filter-wrap
@@ -146,14 +148,13 @@
 	.copyright-wrap
 		display: grid
 		grid-row: 3
-		white-space: nowrap
 		color: $colorLightYellow
+		grid-template-columns: minmax(20px, 1fr) fit-content(80%) minmax(20px, 1fr)
 
 		.copyright-style
 			display: inline
-			max-width: 100%
+			grid-column: 2
 			margin: 0
-			padding-left: 30px
 			align-self: center
 			justify-self: left
 			font-size: 10px

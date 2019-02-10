@@ -36,13 +36,7 @@ See [`package.json`](https://github.com/Todiros/my-reads/blob/master/package.jso
 ## Technology
 
 * HTML, CSS, JavaScript (ES6)
-* [React](https://reactjs.org/)
-* [React-Router](https://reacttraining.com/react-router/)
-* [Create React App](https://github.com/facebookincubator/create-react-app) ([React Scripts](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md))
-* [Node.JS](https://nodejs.org/en/) with [NPM](https://www.npmjs.com/)
-
-
-*   Webpack 4.20 ( ͡° ͜ʖ ͡°)
+* Webpack 4.20
 * Webpack Dev Server + HMR
 * React 16 w/ PropTypes
 * Babel 7

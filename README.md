@@ -31,7 +31,7 @@ Alternatively, you can clone this repository and `npm install` and then `npm sta
 
 ## Dependencies 
 
-See [`package.json`](https://github.com/Todiros/my-reads/blob/master/package.json)
+See [`package.json`](https://github.com/Todiros/neighborhood-map/blob/master/package.json)
 
 ## Technology
 
